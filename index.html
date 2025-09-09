@@ -1,0 +1,109 @@
+{%extends "base.html"%}
+{%block title%} -TaskMate{%endblock%}
+{% block content %}
+
+            <div class="container">
+            <h2>✅ Welcome to TaskMate</h2>
+              <p>Organize your tasks and boost your productivity.</p>
+
+        <!-- Input Section -->
+        <div class="input-box">
+            
+            <input type="text" id="taskInput" placeholder="Enter a new task...">
+            <button class="add-btn" onclick="addTask()">Add</button>
+            </form>
+        </div>
+
+        <!-- Task List -->
+        <ul id="taskList">
+            <li>
+              <span>Work on Project</span>
+              <div><button class="done-btn" onclick="markDone(this)"> Done ✔</button>
+                    <button class="delete-btn" onclick="deleteTask(this)"> Delete ✖</button>
+                    </div>
+    
+  </li>
+
+  
+  <li style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #eee;">
+
+
+
+            </li>
+            <li>
+                Prepare Notes 
+                <div><button class="done-btn" onclick="markDone(this)"> Done ✔</button>
+                    <button class="delete-btn" onclick="deleteTask(this)"> Delete ✖</button>
+                </div>
+                <li style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #eee;">
+
+
+
+            </li>
+            <li>
+                Aptitude Practice 
+                <div>
+                    <button class="done-btn" onclick="markDone(this)"> Done ✔</button>
+                    <button class="delete-btn" onclick="deleteTask(this)"> Delete ✖ </button >
+                </div>
+                <li style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #eee;">
+
+
+
+            </li>
+            <li>
+                Online Lecture 
+                <div>
+                    <button class="done-btn" onclick="markDone(this)">Done ✔ </button>
+                    <button class="delete-btn" onclick="deleteTask(this)"> Delete ✖</button>
+                </div>
+                <li style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #eee;">
+
+
+
+            </li>
+        </ul>
+        
+    <footer >
+        <p>@2025 TaskMate |taskmate365@gmail.com</p>
+    </footer>
+    </div>
+        
+
+    <script>
+        function addTask() {
+            let taskInput = document.getElementById("taskInput");
+            let taskText = taskInput.value.trim();
+
+            if (taskText === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.innerHTML = `
+                ${taskText}
+                <div>
+                    <button class="done-btn" onclick="markDone(this)"> Done ✔</button>
+                    
+                    <button class="delete-btn" onclick="deleteTask(this)"> Delete ✖</button>
+                </div>
+            `;
+            document.getElementById("taskList").appendChild(li);
+            taskInput.value = "";
+        }
+
+        function markDone(button) {
+            let li = button.parentElement.parentElement;
+            li.classList.toggle("completed");
+        }
+
+        function deleteTask(button) {
+            let li = button.parentElement.parentElement;
+            li.remove();
+        }
+    </script>
+    {% endblock %}
+
+
+

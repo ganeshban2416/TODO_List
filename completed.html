@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Completed Tasks{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>✅ Completed Tasks</h1>
+    <ul>
+        {% for task in completed_tasks %}
+        <li class="done-task">{{ task.name }}</li>
+        {% else %}
+        <p>No completed tasks yet.</p>
+        {% endfor %}
+    </ul>
+    <a href="{{url-for('main.home')}}"> Back to TO_DO List </a>
+{% endblock %}
